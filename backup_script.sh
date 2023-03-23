@@ -66,14 +66,17 @@ check_target
 
 # Copying of files
 
-	echo "Copying files:" >> backup_log.txt
-	cp -v $BACKUP_SOURCE/* $BACKUP_TARGET 2>&1 >> backup_log.txt
-	echo "====================================================" 2>&1 >> backup_log.txt
-	echo "Files copied:" >> backup_log.txt
-	echo "$( ls -latrh $BACKUP_TARGET )" >> backup_log.txt
-	echo "====================================================" 2>&1 >> backup_log.txt
-	echo "This backup was performed at `date`" >> backup_log.txt
+copy () {	
+	echo "Copying files:" 
+	cp -v $BACKUP_SOURCE/* $BACKUP_TARGET 
+	echo "====================================================" 
+	echo "Files copied:" 
+	echo "$( ls -latrh $BACKUP_TARGET )"
+	echo "====================================================" 
+	echo "This backup was performed at `date`"
+} 
 
+copy 2>&1 >> backup_log.txt
 
 
 
