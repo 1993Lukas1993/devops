@@ -4,6 +4,7 @@
 
 BACKUP_SOURCE="$1"
 BACKUP_TARGET="$2"
+LOGFILE=backup_log.txt
 
 # testing of arguments
 
@@ -60,8 +61,8 @@ check_target
 
 # Testing for backup log
 
-	if [ -f backup_log.txt ]; then
-		rm -rf backup_log.txt
+	if [ -f $LOGFILE ]; then
+		rm -rf $LOGFILE
 	fi
 
 # Copying of files
@@ -76,7 +77,7 @@ copy () {
 	echo "This backup was performed at `date`"
 } 
 
-copy 2>&1 >> backup_log.txt
+copy 2>&1 >> $LOGFILE
 
 
 
