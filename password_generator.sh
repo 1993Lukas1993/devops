@@ -8,12 +8,9 @@ echo ""
 
 read -p "Please enter the lenght of the password (min 6/max 36): " PASS_LENGHT
 
-if [ $PASS_LENGHT -gt 36 ]; then
-        echo "Please enter range from 6 to 36"
-        exit
-elif [ $PASS_LENGHT -lt 6 ]; then
-        echo "Please enter range from 6 to 36"
-        exit
+if [ -z $PASS_LENGHT ] || [ $PASS_LENGHT -gt 36 ] || [ $PASS_LENGHT -lt 6 ]; then
+	echo "Please enter range from 6 to 36"
+	exit
 fi
 
 echo ""
