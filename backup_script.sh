@@ -77,7 +77,7 @@ copy () {
 	echo "This backup was performed at `date`"
 } 
 
-copy 2>&1 >> $LOGFILE
+copy 2>&1 > $LOGFILE
 
 
 
