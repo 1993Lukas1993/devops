@@ -39,7 +39,7 @@ check_target () {
 
         case $OVERWRITE in
 
-        1) rm -rf $BACKUP_TARGET && mkdir $BACKUP_TARGET && echo "Target directory was overwritted" ;;
+        1) rm -rf $BACKUP_TARGET && mkdir $BACKUP_TARGET && echo "Target directory will be overwritted" ;;
         2) echo "Exiting script" && exit 1 ;;
         *) echo "Please select yes or no" && exit 1 ;;
 
@@ -53,21 +53,6 @@ check_target () {
         fi
 }
 
-
-# Calling of functions
-
-check_source
-
-check_target
-
-# Testing for backup log
-
-        if [ -f $LOGFILE ]; then
-                rm -rf $LOGFILE
-        fi
-
-# Copying of files
-
 copy () {
         echo "Copying files:"
         cp -Rv $BACKUP_SOURCE/* $BACKUP_TARGET
@@ -78,7 +63,26 @@ copy () {
         echo "This backup was performed at `date`"
 }
 
-copy 2>&1 > $LOGFILE
+
+# testing for backup log
+
+        if [ -f $LOGFILE ]; then
+                rm -rf $LOGFILE
+        fi
+
+
+# Checking source directory
+
+check_source
+
+# Checking target directory
+
+check_target
+
+# copying files
+
+copy 2>&1 >> $LOGFILE
+
 
 clear
 cat $LOGFILE
