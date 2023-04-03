@@ -10,7 +10,7 @@ LOGFILE=backup_log.txt
 
         if [ $# != 2 ]; then
                 echo "Usage: ./backup.sh <SOURCE> <TARGET>"
-                exit 1
+                exit 2
         fi
 
 # List of functions
